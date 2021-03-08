@@ -1,22 +1,6 @@
 // from data.js
 var tableData = data;
 
-/*
-  function getDate() {
-    return  document.getElementById("datetime").value;
-}
-
-var inputField = d3.select("#datetime");
-
-function handleClick() {
-    console.log("A button was clicked");
-}
-var d = handleClick
-  function selectDate(ufo) {
-      return ufo.datetime === "1/9/2010"
-  }
-*/
-
 //**************************************************************** */
 // Select the button
 var button = d3.select("#filter-btn");
@@ -49,6 +33,18 @@ function runEnter() {
 var dateSelected = data.filter(selectDate);
 console.log(dateSelected);
 
+// Now create all of the table stuff and populate with the date selected data
+
+// Reference to the table body
+var tbody = d3.select("tbody");
+
+data.forEach((ufoReport) => {
+  var row = tbody.append("tr");
+  Object.entries(ufoReport).forEach(([key, value]) => {
+    var cell = row.append("td");
+    cell.text(value);
+  });
+});
 
 }
 //***************************************************************** */
